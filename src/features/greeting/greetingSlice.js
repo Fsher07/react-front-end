@@ -9,7 +9,6 @@ export const fetchGreetings = createAsyncThunk(
   'greeting/fetchGreetings',
   async () => {
     const response = await axios.get('http://localhost:3000/api/greetings');
-    console.log('response:', response.data);
     return response.data;
   },
 );
