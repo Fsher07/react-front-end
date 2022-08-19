@@ -19,16 +19,12 @@ export const counterSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGreetings.pending, (state) => {
-        // eslint-disable-next-line no-param-reassign
-        state.status = 'loading';
-      })
-      .addCase(fetchGreetings.fulfilled, (state, action) => {
-        // eslint-disable-next-line no-param-reassign
-        state.status = 'idle';
-        // eslint-disable-next-line no-param-reassign
-        state.message = action.payload;
-      });
+      .addCase(fetchGreetings.pending, (state) => (
+        { ...state, status: 'loading' }
+      ))
+      .addCase(fetchGreetings.fulfilled, (state, action) => ({
+        ...state, message: action.payload,
+      }));
   },
 });
 

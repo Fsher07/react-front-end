@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchGreetings } from './features/greeting/greetingSlice';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Greeting from './app/Greeting';
 import './App.css';
 
 function App() {
-  const message = useSelector((state) => state.message.message);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchGreetings());
-  }, []);
-  fetchGreetings();
   return (
-    <div className="App">
-      {!message.loading && message.message}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Greeting />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
